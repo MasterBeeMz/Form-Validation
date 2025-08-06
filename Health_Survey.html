@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>แบบสอบถามสุขภาพ</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Prompt', sans-serif;
+      background-image: url('https://siamclinicthailand.com/wp-content/uploads/2024/03/18-1024x616.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: relative;
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+    /* Overlay สีดำใส ช่วยให้ฟอร์มอ่านง่าย */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.35);
+      z-index: -1;
+    }
+    .glass {
+      backdrop-filter: blur(16px) saturate(180%);
+      -webkit-backdrop-filter: blur(16px) saturate(180%);
+      background-color: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+      border-radius: 1.5rem;
+      max-width: 480px;
+      width: 100%;
+      padding: 2rem;
+      box-sizing: border-box;
+    }
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 3px rgba(59,130,246,0.3);
+      background-color: rgba(255 255 255 / 0.9);
+      transition: 0.3s ease;
+    }
+  </style>
+</head>
+<body>
+
+  <form id="healthForm" class="glass space-y-6">
+    <h2 class="text-3xl font-bold text-center text-blue-900">📋 แบบสอบถามสุขภาพ</h2>
+
+    <!-- อายุ -->
+    <div>
+      <label class="block font-semibold text-gray-800">อายุ (15–60 ปี)</label>
+      <input
+        type="number"
+        id="age"
+        placeholder="เช่น 25"
+        class="w-full p-3 mt-1 rounded-xl border border-gray-300 focus:ring-2 focus:border-blue-500"
+        min="15"
+        max="60"
+      />
+      <p id="ageError" class="text-sm text-red-600 hidden mt-1">กรุณากรอกอายุระหว่าง 15–60 ปี</p>
+    </div>
+
+    <!-- เพศ -->
+    <div>
+      <label class="block font-semibold text-gray-800">🚻 เพศ</label>
+      <div class="flex gap-6 mt-2">
+        <label><input type="radio" name="gender" value="ชาย" /> ชาย</label>
+        <label><input type="radio" name="gender" value="หญิง" /> หญิง</label>
+      </div>
+      <p id="genderError" class="text-sm text-red-600 hidden mt-1">กรุณาเลือกเพศ</p>
+    </div>
+
+    <!-- น้ำหนัก -->
+    <div>
+      <label class="block font-semibold text-gray-800">⚖️ น้ำหนัก (กก.)</label>
+      <input
+        type="number"
+        id="weight"
+        placeholder="เช่น 60"
+        class="w-full p-3 mt-1 rounded-xl border border-gray-300 focus:ring-2 focus:border-blue-500"
+        min="0"
+        step="0.1"
+      />
+      <p id="weightError" class="text-sm text-red-600 hidden mt-1">กรุณากรอกน้ำหนักให้ถูกต้อง</p>
+    </div>
+
+    <!-- ส่วนสูง -->
+    <div>
+      <label class="block font-semibold text-gray-800">📏 ส่วนสูง (ซม.)</label>
+      <input
+        type="number"
+        id="height"
+        placeholder="เช่น 170"
+        class="w-full p-3 mt-1 rounded-xl border border-gray-300 focus:ring-2 focus:border-blue-500"
+        min="0"
+        step="0.1"
+      />
+      <p id="heightError" class="text-sm text-red-600 hidden mt-1">กรุณากรอกส่วนสูงให้ถูกต้อง</p>
+    </div>
+
+    <!-- โรคประจำตัว -->
+    <div>
+      <label class="block font-semibold text-gray-800">🩺 โรคประจำตัว</label>
+      <div class="mt-1">
+        <label class="flex items-center gap-2">
+          <input type="checkbox" id="hasDisease" />
+          <span>มีโรคประจำตัว</span>
+        </label>
+        <textarea
+          id="diseaseDetail"
+          rows="3"
+          placeholder="กรอกรายละเอียดโรคประจำตัว..."
+          class="w-full mt-3 p-3 border border-gray-300 rounded-xl hidden"
+        ></textarea>
+        <p id="diseaseError" class="text-sm text-red-600 hidden mt-1">กรุณากรอกรายละเอียดโรคประจำตัว</p>
+      </div>
+    </div>
+
+    <!-- ปุ่มส่ง -->
+    <div class="text-center">
+      <button
+        type="submit"
+        class="bg-blue-600 text-white px-6 py-3 rounded-full shadow hover:bg-blue-700 transition"
+      >✅ ส่งแบบสอบถาม</button>
+    </div>
+  </form>
+
+  <!-- Modal ผลลัพธ์ -->
+  <div
+    id="resultModal"
+    class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50"
+  >
+    <div class="bg-white rounded-3xl shadow-2xl w-80 p-6 text-center space-y-3">
+      <h3 class="text-2xl font-bold text-green-700">🎉 ผลการประเมิน</h3>
+      <p id="bmiValue" class="text-lg font-semibold text-gray-800"></p>
+      <p id="bmiCategory" class="text-blue-600 font-semibold"></p>
+      <button
+        onclick="closeModal()"
+        class="mt-4 bg-blue-500 text-white px-5 py-2 rounded-full hover:bg-blue-600"
+      >ปิด</button>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById("healthForm");
+    const modal = document.getElementById("resultModal");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const age = parseInt(document.getElementById("age").value);
+      const gender = document.querySelector('input[name="gender"]:checked');
+      const weight = parseFloat(document.getElementById("weight").value);
+      const height = parseFloat(document.getElementById("height").value);
+      const hasDisease = document.getElementById("hasDisease").checked;
+      const diseaseDetail = document.getElementById("diseaseDetail").value.trim();
+
+      document.querySelectorAll("p.text-red-600").forEach(p => p.classList.add("hidden"));
+
+      let isValid = true;
+
+      if (isNaN(age) || age < 15 || age > 60) {
+        document.getElementById("ageError").classList.remove("hidden");
+        isValid = false;
+      }
+      if (!gender) {
+        document.getElementById("genderError").classList.remove("hidden");
+        isValid = false;
+      }
+      if (isNaN(weight) || weight <= 0) {
+        document.getElementById("weightError").classList.remove("hidden");
+        isValid = false;
+      }
+      if (isNaN(height) || height <= 0) {
+        document.getElementById("heightError").classList.remove("hidden");
+        isValid = false;
+      }
+      if (hasDisease && diseaseDetail === "") {
+        document.getElementById("diseaseError").classList.remove("hidden");
+        isValid = false;
+      }
+
+      if (!isValid) return;
+
+      const bmi = weight / ((height / 100) ** 2);
+      let category = "";
+      if (bmi < 18.5) category = "น้ำหนักน้อย";
+      else if (bmi < 24.9) category = "น้ำหนักปกติ";
+      else if (bmi < 29.9) category = "น้ำหนักเกิน";
+      else category = "อ้วน";
+
+      document.getElementById("bmiValue").textContent = `BMI ของคุณคือ: ${bmi.toFixed(2)}`;
+      document.getElementById("bmiCategory").textContent = `หมวดหมู่: ${category}`;
+
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
+    });
+
+    document.getElementById("hasDisease").addEventListener("change", function () {
+      document.getElementById("diseaseDetail").classList.toggle("hidden", !this.checked);
+    });
+
+    function closeModal() {
+      modal.classList.add("hidden");
+    }
+  </script>
+</body>
+</html>
