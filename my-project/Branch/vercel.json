@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/Branch_transfer_request.html",
+      "permanent": true
+    }
+  ]
+}
