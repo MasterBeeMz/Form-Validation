@@ -21,123 +21,123 @@
     }
   </style>
 </head>
-<body class="bg-indigo-50 min-h-screen flex items-center justify-center p-6 font-sarabun">
+<body class="bg-indigo-50 min-h-screen flex items-center justify-center p-4 font-sarabun">
 
-  <main class="bg-white shadow-2xl rounded-xl max-w-4xl w-full p-8 space-y-8">
-    <header class="text-center flex flex-col items-center space-y-3">
-      <img src="https://upload.wikimedia.org/wikipedia/th/thumb/b/b7/MJU_LOGO.svg/250px-MJU_LOGO.svg.png" alt="ตรามหาวิทยาลัยแม่โจ้" style="width: 120px;" class="h-auto" />
+  <main class="bg-white shadow-2xl rounded-xl max-w-4xl w-full p-6 md:p-8 space-y-10">
+    <header class="text-center flex flex-col items-center space-y-4">
+      <img src="https://upload.wikimedia.org/wikipedia/th/thumb/b/b7/MJU_LOGO.svg/250px-MJU_LOGO.svg.png" alt="ตรามหาวิทยาลัยแม่โจ้" class="max-w-[120px] w-1/4 h-auto" />
       <h1 class="text-3xl font-bold text-indigo-700">มหาวิทยาลัยแม่โจ้</h1>
       <p class="text-lg text-gray-600">คำร้องขอโอนย้ายสาขาวิชาต่างคณะ</p>
     </header>
 
-    <form id="transferForm" class="space-y-6" novalidate>
+    <form id="transferForm" class="space-y-8" novalidate>
       <section class="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
         <label for="date" class="font-semibold text-gray-700">วันที่</label>
-        <input type="date" id="date" name="date" class="md:col-span-2 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-indigo-500" required />
+        <input type="date" id="date" name="date" class="md:col-span-2 p-3 w-full border border-gray-300 rounded focus:ring-2 focus:ring-indigo-500" required />
       </section>
 
       <section>
-        <h2 class="text-xl font-semibold text-indigo-600 mb-3">ข้อมูลนักศึกษา</h2>
+        <h2 class="text-xl font-semibold text-indigo-600 mb-5">ข้อมูลนักศึกษา</h2>
 
-        <div class="flex flex-wrap gap-4 mb-4">
-          <label class="inline-flex items-center space-x-2">
+        <div class="flex flex-wrap gap-6 mb-6">
+          <label class="inline-flex items-center space-x-2 cursor-pointer">
             <input type="radio" name="title" value="นาย" required class="form-radio text-indigo-600" />
             <span>นาย</span>
           </label>
-          <label class="inline-flex items-center space-x-2">
+          <label class="inline-flex items-center space-x-2 cursor-pointer">
             <input type="radio" name="title" value="นาง" class="form-radio text-indigo-600" />
             <span>นาง</span>
           </label>
-          <label class="inline-flex items-center space-x-2">
+          <label class="inline-flex items-center space-x-2 cursor-pointer">
             <input type="radio" name="title" value="นางสาว" class="form-radio text-indigo-600" />
             <span>นางสาว</span>
           </label>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4 items-center">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 items-center">
           <label for="fullName" class="font-semibold text-gray-700">ชื่อ-นามสกุล</label>
-          <input type="text" id="fullName" name="fullName" placeholder="เช่น สมชาย ใจดี" class="md:col-span-2 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-indigo-500" required />
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4 items-center">
-          <label for="studentId" class="font-semibold text-gray-700">รหัสนักศึกษา</label>
-          <input type="text" id="studentId" name="studentId" placeholder="เช่น 6001234567" class="md:col-span-2 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-indigo-500" required pattern="\d{10}" title="กรุณากรอกรหัสนักศึกษา 10 หลัก" />
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4 items-center">
-          <label for="phone" class="font-semibold text-gray-700">โทรศัพท์มือถือ</label>
-          <input type="tel" id="phone" name="phone" placeholder="0xx-xxx-xxxx หรือ 0xxxxxxxxx" class="md:col-span-2 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-indigo-500" required />
+          <input type="text" id="fullName" name="fullName" placeholder="เช่น สมชาย ใจดี" class="md:col-span-2 p-3 w-full border border-gray-300 rounded focus:ring-2 focus:ring-indigo-500" required />
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 items-center">
+          <label for="studentId" class="font-semibold text-gray-700">รหัสนักศึกษา</label>
+          <input type="text" id="studentId" name="studentId" placeholder="เช่น 6001234567" class="md:col-span-2 p-3 w-full border border-gray-300 rounded focus:ring-2 focus:ring-indigo-500" required pattern="\d{10}" title="กรุณากรอกรหัสนักศึกษา 10 หลัก" />
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 items-center">
+          <label for="phone" class="font-semibold text-gray-700">โทรศัพท์มือถือ</label>
+          <input type="tel" id="phone" name="phone" placeholder="0xx-xxx-xxxx หรือ 0xxxxxxxxx" class="md:col-span-2 p-3 w-full border border-gray-300 rounded focus:ring-2 focus:ring-indigo-500" required />
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8 items-center">
           <label for="system" class="font-semibold text-gray-700">ระบบ</label>
-          <select id="system" name="system" class="md:col-span-2 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-indigo-500" required>
+          <select id="system" name="system" class="md:col-span-2 p-3 w-full border border-gray-300 rounded focus:ring-2 focus:ring-indigo-500" required>
             <option value="" disabled selected>-- เลือกระบบการศึกษา --</option>
             <option value="ภาคปกติ">ภาคปกติ</option>
             <option value="ภาคสมทบ">ภาคสมทบ</option>
           </select>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 items-center">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8 items-center">
           <label for="course" class="font-semibold text-gray-700">หลักสูตร</label>
-          <select id="course" name="course" class="md:col-span-2 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-indigo-500" required>
+          <select id="course" name="course" class="md:col-span-2 p-3 w-full border border-gray-300 rounded focus:ring-2 focus:ring-indigo-500" required>
             <option value="" disabled selected>-- เลือกหลักสูตร --</option>
             <option value="4-5 ปี">4 – 5 ปี</option>
             <option value="4 ปีเทียบเข้าเรียน (2 ปี)">4 ปีเทียบเข้าเรียน (2 ปี)</option>
           </select>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 items-center">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8 items-center">
           <label for="currentMajor" class="font-semibold text-gray-700">สาขาวิชาเดิม</label>
-          <input type="text" id="currentMajor" name="currentMajor" placeholder="เช่น วิทยาการคอมพิวเตอร์" class="md:col-span-2 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-indigo-500" required />
+          <input type="text" id="currentMajor" name="currentMajor" placeholder="เช่น วิทยาการคอมพิวเตอร์" class="md:col-span-2 p-3 w-full border border-gray-300 rounded focus:ring-2 focus:ring-indigo-500" required />
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 items-center">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8 items-center">
           <label for="currentFaculty" class="font-semibold text-gray-700">คณะเดิม</label>
-          <input type="text" id="currentFaculty" name="currentFaculty" placeholder="เช่น คณะวิทยาศาสตร์" class="md:col-span-2 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-indigo-500" required />
+          <input type="text" id="currentFaculty" name="currentFaculty" placeholder="เช่น คณะวิทยาศาสตร์" class="md:col-span-2 p-3 w-full border border-gray-300 rounded focus:ring-2 focus:ring-indigo-500" required />
         </div>
       </section>
 
       <section>
-        <h2 class="text-xl font-semibold text-indigo-600 mb-3">รายละเอียดการขอโอนย้าย</h2>
+        <h2 class="text-xl font-semibold text-indigo-600 mb-5">รายละเอียดการขอโอนย้าย</h2>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 items-center">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8 items-center">
           <label for="targetMajor" class="font-semibold text-gray-700">สาขาวิชาที่ต้องการย้ายไป</label>
-          <input type="text" id="targetMajor" name="targetMajor" placeholder="เช่น วิศวกรรมคอมพิวเตอร์" class="md:col-span-2 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-indigo-500" required />
+          <input type="text" id="targetMajor" name="targetMajor" placeholder="เช่น วิศวกรรมคอมพิวเตอร์" class="md:col-span-2 p-3 w-full border border-gray-300 rounded focus:ring-2 focus:ring-indigo-500" required />
         </div>
 
-        <div class="mb-6">
-          <label for="reason" class="font-semibold text-gray-700 block mb-1">เหตุผลในการขอโอนย้าย</label>
-          <textarea id="reason" name="reason" rows="4" placeholder="กรุณาอธิบายเหตุผล..." class="w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-indigo-500" required></textarea>
+        <div class="mb-8">
+          <label for="reason" class="font-semibold text-gray-700 block mb-2">เหตุผลในการขอโอนย้าย</label>
+          <textarea id="reason" name="reason" rows="5" placeholder="กรุณาอธิบายเหตุผล..." class="w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-indigo-500" required></textarea>
         </div>
       </section>
 
-      <section class="bg-indigo-50 p-6 rounded-lg text-indigo-700 border border-indigo-300 space-y-3">
-        <h2 class="text-lg font-semibold mb-2">คุณสมบัติครบถ้วนในการขอย้ายสาขาวิชา</h2>
+      <section class="bg-indigo-50 p-6 rounded-lg text-indigo-700 border border-indigo-300 space-y-4">
+        <h2 class="text-lg font-semibold mb-3">คุณสมบัติครบถ้วนในการขอย้ายสาขาวิชา</h2>
 
         <div>
           <h3 class="font-semibold underline">หลักสูตร 4 ปีเทียบเข้าเรียน (2 ปี)</h3>
-          <ul class="list-disc ml-5 space-y-1">
+          <ul class="list-disc ml-6 space-y-1">
             <li>ได้ศึกษาตามแผนการศึกษาในสาขาวิชาเดิมมาแล้วไม่น้อยกว่า 1 ภาคการศึกษาปกติ</li>
             <li>มีหน่วยกิตสะสมไม่น้อยกว่า 18 หน่วยกิต และมีคะแนนเฉลี่ยสะสมไม่น้อยกว่า 2.00</li>
           </ul>
         </div>
 
         <div>
-          <h3 class="font-semibold underline mt-3">หลักสูตร 4 ปี</h3>
-          <ul class="list-disc ml-5 space-y-1">
+          <h3 class="font-semibold underline mt-4">หลักสูตร 4 ปี</h3>
+          <ul class="list-disc ml-6 space-y-1">
             <li>ได้ศึกษาตามแผนการศึกษาในสาขาวิชาเดิมมาแล้วไม่น้อยกว่า 2 ภาคการศึกษาปกติ</li>
             <li>มีหน่วยกิตสะสมไม่น้อยกว่า 30 หน่วยกิต และมีคะแนนเฉลี่ยสะสมไม่น้อยกว่า 2.00</li>
           </ul>
         </div>
 
-        <p class="mt-3">และยื่นคำร้องโอนย้ายสาขาวิชาภายในคณะก่อนวันที่  
-          <input type="date" id="deadlineDate" name="deadlineDate" class="ml-2 p-1 border border-gray-300 rounded focus:ring-2 focus:ring-indigo-500" required />
+        <p class="mt-4">และยื่นคำร้องโอนย้ายสาขาวิชาภายในคณะก่อนวันที่  
+          <input type="date" id="deadlineDate" name="deadlineDate" class="ml-2 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-indigo-500" required />
         </p>
       </section>
 
       <div class="text-center">
-        <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-8 rounded shadow-lg transition duration-300">
+        <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-4 px-10 rounded shadow-lg transition duration-300">
           ส่งคำร้องขอโอนย้าย
         </button>
       </div>
