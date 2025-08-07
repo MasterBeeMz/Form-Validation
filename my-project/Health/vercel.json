@@ -1,9 +1,0 @@
-{
-  "redirects": [
-    {
-      "source": "/",
-      "destination": "/Health_Survey.html",
-      "permanent": true
-    }
-  ]
-}
