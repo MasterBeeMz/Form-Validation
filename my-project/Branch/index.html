@@ -3,430 +3,270 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>คำร้องขอโอนย้ายสาขาวิชาต่างคณะ</title>
+  <title>คำร้องขอโอนย้ายสาขาวิชาต่างคณะ | มหาวิทยาลัยแม่โจ้</title>
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Sarabun&display=swap" rel="stylesheet" />
+
+  <style>
+    body, input, select, textarea, button {
+      font-family: 'Sarabun', sans-serif;
+    }
+    textarea::-webkit-scrollbar {
+      width: 8px;
+    }
+    textarea::-webkit-scrollbar-thumb {
+      background-color: #4f46e5;
+      border-radius: 10px;
+    }
+  </style>
 </head>
-<body class="bg-gray-100 font-sarabun p-6">
+<body class="bg-indigo-50 min-h-screen flex items-center justify-center p-6 font-sarabun">
 
-  <main class="max-w-4xl mx-auto bg-white p-10 rounded-lg shadow-lg">
-    <h1 class="text-3xl font-bold text-center text-blue-900 mb-6">คำร้องขอโอนย้ายสาขาวิชาต่างคณะ</h1>
+  <main class="bg-white shadow-2xl rounded-xl max-w-4xl w-full p-8 space-y-8">
+    <header class="text-center flex flex-col items-center space-y-3">
+      <img src="https://upload.wikimedia.org/wikipedia/th/thumb/b/b7/MJU_LOGO.svg/250px-MJU_LOGO.svg.png" alt="ตรามหาวิทยาลัยแม่โจ้" style="width: 120px;" class="h-auto" />
+      <h1 class="text-3xl font-bold text-indigo-700">มหาวิทยาลัยแม่โจ้</h1>
+      <p class="text-lg text-gray-600">คำร้องขอโอนย้ายสาขาวิชาต่างคณะ</p>
+    </header>
 
-    <p class="italic text-center mb-10 text-gray-600">
-      สำหรับหลักสูตร 4 ปี และหลักสูตร 4 ปีเทียบเข้าเรียน (2 ปี)<br />
-      เขียนที่ มหาวิทยาลัยแม่โจ้
-    </p>
+    <form id="transferForm" class="space-y-6" novalidate>
+      <section class="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
+        <label for="date" class="font-semibold text-gray-700">วันที่</label>
+        <input type="date" id="date" name="date" class="md:col-span-2 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-indigo-500" required />
+      </section>
 
-    <form id="transferForm" novalidate>
-      <!-- วันที่ เดือน ปี -->
-      <div class="flex flex-wrap gap-6 mb-6">
-        <div class="flex-1 min-w-[150px]">
-          <label for="date" class="block font-semibold mb-1">วันที่ <span class="text-red-600">*</span></label>
-          <input type="date" id="date" name="date" required
-            class="w-full rounded-md border border-gray-300 p-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-        </div>
-        <div class="flex-1 min-w-[150px]">
-          <label for="month" class="block font-semibold mb-1">เดือน <span class="text-red-600">*</span></label>
-          <input type="text" id="month" name="month" placeholder="กรอกเดือน เช่น มกราคม" required
-            class="w-full rounded-md border border-gray-300 p-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-        </div>
-        <div class="flex-1 min-w-[150px]">
-          <label for="year" class="block font-semibold mb-1">พ.ศ. <span class="text-red-600">*</span></label>
-          <input type="text" id="year" name="year" placeholder="กรอกปี พ.ศ." required pattern="^[0-9]{4}$"
-            class="w-full rounded-md border border-gray-300 p-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-        </div>
-      </div>
+      <section>
+        <h2 class="text-xl font-semibold text-indigo-600 mb-3">ข้อมูลนักศึกษา</h2>
 
-      <label class="block font-semibold mb-1">เรื่อง</label>
-      <p class="font-bold text-lg mb-6">ขอโอนย้ายสาขาวิชาต่างคณะ</p>
-
-      <div class="mb-6">
-        <label for="deanFaculty" class="block font-semibold mb-1">เรียน คณบดีคณะ (คณะใหม่) <span class="text-red-600">*</span></label>
-        <input type="text" id="deanFaculty" name="deanFaculty" placeholder="กรอกชื่อคณะใหม่" required
-          class="w-full rounded-md border border-gray-300 p-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-      </div>
-
-      <div class="mb-6">
-        <label class="block font-semibold mb-1">สิ่งที่ส่งมาด้วย</label>
-        <p>ใบรายงานผลการศึกษา</p>
-      </div>
-
-      <div class="mb-6">
-        <label class="block font-semibold mb-2">ข้าพเจ้า <span class="text-red-600">*</span></label>
-        <div class="flex gap-8">
-          <label class="flex items-center cursor-pointer">
-            <input type="radio" name="title" value="นาย" required class="mr-2" />
-            นาย
+        <div class="flex flex-wrap gap-4 mb-4">
+          <label class="inline-flex items-center space-x-2">
+            <input type="radio" name="title" value="นาย" required class="form-radio text-indigo-600" />
+            <span>นาย</span>
           </label>
-          <label class="flex items-center cursor-pointer">
-            <input type="radio" name="title" value="นาง" required class="mr-2" />
-            นาง
+          <label class="inline-flex items-center space-x-2">
+            <input type="radio" name="title" value="นาง" class="form-radio text-indigo-600" />
+            <span>นาง</span>
           </label>
-          <label class="flex items-center cursor-pointer">
-            <input type="radio" name="title" value="นางสาว" required class="mr-2" />
-            นางสาว
+          <label class="inline-flex items-center space-x-2">
+            <input type="radio" name="title" value="นางสาว" class="form-radio text-indigo-600" />
+            <span>นางสาว</span>
           </label>
         </div>
-      </div>
 
-      <div class="mb-6">
-        <input type="text" id="fullname" name="fullname" placeholder="ชื่อ-นามสกุล" required
-          class="w-full rounded-md border border-gray-300 p-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-      </div>
-
-      <div class="flex flex-wrap gap-6 mb-6">
-        <div class="flex-1 min-w-[180px]">
-          <label for="studentID" class="block font-semibold mb-1">รหัสนักศึกษา <span class="text-red-600">*</span></label>
-          <input type="text" id="studentID" name="studentID" placeholder="กรอกรหัสนักศึกษา" required
-            class="w-full rounded-md border border-gray-300 p-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4 items-center">
+          <label for="fullName" class="font-semibold text-gray-700">ชื่อ-นามสกุล</label>
+          <input type="text" id="fullName" name="fullName" placeholder="เช่น สมชาย ใจดี" class="md:col-span-2 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-indigo-500" required />
         </div>
-        <div class="flex-1 min-w-[180px]">
-          <label for="phone" class="block font-semibold mb-1">โทรศัพท์มือถือ <span class="text-red-600">*</span></label>
-          <input type="text" id="phone" name="phone" placeholder="08-xxxx-xxxx" required pattern="^0[689]{1}-\d{4}-\d{4}$"
-            class="w-full rounded-md border border-gray-300 p-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-          <p class="text-xs text-gray-500 mt-1">รูปแบบ: 08-xxxx-xxxx</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4 items-center">
+          <label for="studentId" class="font-semibold text-gray-700">รหัสนักศึกษา</label>
+          <input type="text" id="studentId" name="studentId" placeholder="เช่น 6001234567" class="md:col-span-2 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-indigo-500" required pattern="\d{10}" title="กรุณากรอกรหัสนักศึกษา 10 หลัก" />
         </div>
-      </div>
 
-      <div class="mb-6">
-        <label for="system" class="block font-semibold mb-1">ระบบ <span class="text-red-600">*</span></label>
-        <input type="text" id="system" name="system" placeholder="ระบบเรียน (ภาคปกติ/ภาคสมทบ)" required
-          class="w-full rounded-md border border-gray-300 p-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-      </div>
-
-      <fieldset class="mb-6">
-        <legend class="font-semibold mb-2">หลักสูตร <span class="text-red-600">*</span></legend>
-        <div class="flex flex-wrap gap-6">
-          <label class="inline-flex items-center cursor-pointer">
-            <input type="checkbox" name="course" value="4-5 ปี" class="mr-2" />
-            4 – 5 ปี
-          </label>
-          <label class="inline-flex items-center cursor-pointer">
-            <input type="checkbox" name="course" value="4 ปีเทียบเข้าเรียน (2 ปี)" class="mr-2" />
-            4 ปีเทียบเข้าเรียน (2 ปี)
-          </label>
-          <label class="inline-flex items-center cursor-pointer">
-            <input type="checkbox" name="course" value="ภาคปกติ" class="mr-2" />
-            ภาคปกติ
-          </label>
-          <label class="inline-flex items-center cursor-pointer">
-            <input type="checkbox" name="course" value="ภาคสมทบ" class="mr-2" />
-            ภาคสมทบ
-          </label>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4 items-center">
+          <label for="phone" class="font-semibold text-gray-700">โทรศัพท์มือถือ</label>
+          <input type="tel" id="phone" name="phone" placeholder="0xx-xxx-xxxx หรือ 0xxxxxxxxx" class="md:col-span-2 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-indigo-500" required />
         </div>
-      </fieldset>
 
-      <div class="flex flex-wrap gap-6 mb-6">
-        <div class="flex-1 min-w-[180px]">
-          <label for="currentMajor" class="block font-semibold mb-1">สาขาวิชา (ปัจจุบัน) <span class="text-red-600">*</span></label>
-          <input type="text" id="currentMajor" name="currentMajor" placeholder="กรอกสาขาวิชาเดิม" required
-            class="w-full rounded-md border border-gray-300 p-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 items-center">
+          <label for="system" class="font-semibold text-gray-700">ระบบ</label>
+          <select id="system" name="system" class="md:col-span-2 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-indigo-500" required>
+            <option value="" disabled selected>-- เลือกระบบการศึกษา --</option>
+            <option value="ภาคปกติ">ภาคปกติ</option>
+            <option value="ภาคสมทบ">ภาคสมทบ</option>
+          </select>
         </div>
-        <div class="flex-1 min-w-[180px]">
-          <label for="currentFaculty" class="block font-semibold mb-1">คณะ (ปัจจุบัน) <span class="text-red-600">*</span></label>
-          <input type="text" id="currentFaculty" name="currentFaculty" placeholder="กรอกคณะเดิม" required
-            class="w-full rounded-md border border-gray-300 p-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 items-center">
+          <label for="course" class="font-semibold text-gray-700">หลักสูตร</label>
+          <select id="course" name="course" class="md:col-span-2 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-indigo-500" required>
+            <option value="" disabled selected>-- เลือกหลักสูตร --</option>
+            <option value="4-5 ปี">4 – 5 ปี</option>
+            <option value="4 ปีเทียบเข้าเรียน (2 ปี)">4 ปีเทียบเข้าเรียน (2 ปี)</option>
+          </select>
         </div>
-      </div>
 
-      <div class="mb-6">
-        <label for="transferMajor" class="block font-semibold mb-1">มีความประสงค์จะขอโอนย้ายไปสาขาวิชา <span class="text-red-600">*</span></label>
-        <input type="text" id="transferMajor" name="transferMajor" placeholder="กรอกสาขาวิชาที่จะโอนย้ายไป" required
-          class="w-full rounded-md border border-gray-300 p-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-      </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 items-center">
+          <label for="currentMajor" class="font-semibold text-gray-700">สาขาวิชาเดิม</label>
+          <input type="text" id="currentMajor" name="currentMajor" placeholder="เช่น วิทยาการคอมพิวเตอร์" class="md:col-span-2 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-indigo-500" required />
+        </div>
 
-      <div class="mb-6">
-        <label for="reason" class="block font-semibold mb-1">เนื่องจาก <span class="text-red-600">*</span></label>
-        <textarea id="reason" name="reason" placeholder="กรอกเหตุผล" rows="3" required
-          class="w-full rounded-md border border-gray-300 p-2 resize-y focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
-      </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 items-center">
+          <label for="currentFaculty" class="font-semibold text-gray-700">คณะเดิม</label>
+          <input type="text" id="currentFaculty" name="currentFaculty" placeholder="เช่น คณะวิทยาศาสตร์" class="md:col-span-2 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-indigo-500" required />
+        </div>
+      </section>
 
-      <p class="mb-6">
-        ทั้งนี้ ข้าพเจ้ามีคุณสมบัติครบถ้วนในการขอย้ายสาขาวิชา ดังนี้ คือ
-      </p>
+      <section>
+        <h2 class="text-xl font-semibold text-indigo-600 mb-3">รายละเอียดการขอโอนย้าย</h2>
 
-      <div class="bg-gray-200 rounded-md p-4 mb-8 text-sm leading-relaxed">
-        <b>หลักสูตร 4 เทียบเข้าเรียน (2 ปี)</b><br />
-        - ได้ศึกษาตามแผนการศึกษาในสาขาวิชาเดิมมาแล้วไม่น้อยกว่า 1 ภาคการศึกษาปกติ<br />
-        - มีหน่วยกิตสะสมไม่น้อยกว่า 18 หน่วยกิต และมีแต้มเฉลี่ยสะสมไม่น้อยกว่า 2.00<br /><br />
-        <b>หลักสูตร 4 ปี</b><br />
-        - ได้ศึกษาตามแผนการศึกษาในสาขาวิชาเดิมมาแล้วไม่น้อยกว่า 2 ภาคการศึกษาปกติ<br />
-        - มีหน่วยกิตสะสมไม่น้อยกว่า 30 หน่วยกิต และมีแต้มเฉลี่ยสะสมไม่น้อยกว่า 2.00
-      </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 items-center">
+          <label for="targetMajor" class="font-semibold text-gray-700">สาขาวิชาที่ต้องการย้ายไป</label>
+          <input type="text" id="targetMajor" name="targetMajor" placeholder="เช่น วิศวกรรมคอมพิวเตอร์" class="md:col-span-2 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-indigo-500" required />
+        </div>
 
-      <div class="mb-10">
-        <label for="submissionDate" class="block font-semibold mb-1">และยื่นคำร้องโอนย้ายสาขาวิชาภายในคณะก่อนวันที่ <span class="text-red-600">*</span></label>
-        <input type="date" id="submissionDate" name="submissionDate" required
-          class="w-full rounded-md border border-gray-300 p-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-      </div>
+        <div class="mb-6">
+          <label for="reason" class="font-semibold text-gray-700 block mb-1">เหตุผลในการขอโอนย้าย</label>
+          <textarea id="reason" name="reason" rows="4" placeholder="กรุณาอธิบายเหตุผล..." class="w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-indigo-500" required></textarea>
+        </div>
+      </section>
 
-      <p class="font-semibold mb-8">
-        จึงเรียนมาเพื่อโปรดพิจารณาอนุมัติ<br />
-        ขอแสดงความนับถือ
-      </p>
+      <section class="bg-indigo-50 p-6 rounded-lg text-indigo-700 border border-indigo-300 space-y-3">
+        <h2 class="text-lg font-semibold mb-2">คุณสมบัติครบถ้วนในการขอย้ายสาขาวิชา</h2>
 
-      <div class="text-center mb-16">
-        (1)<br />
-        (......................................................)<br />
-        นักศึกษา
-      </div>
+        <div>
+          <h3 class="font-semibold underline">หลักสูตร 4 ปีเทียบเข้าเรียน (2 ปี)</h3>
+          <ul class="list-disc ml-5 space-y-1">
+            <li>ได้ศึกษาตามแผนการศึกษาในสาขาวิชาเดิมมาแล้วไม่น้อยกว่า 1 ภาคการศึกษาปกติ</li>
+            <li>มีหน่วยกิตสะสมไม่น้อยกว่า 18 หน่วยกิต และมีคะแนนเฉลี่ยสะสมไม่น้อยกว่า 2.00</li>
+          </ul>
+        </div>
 
-      <h2 class="text-xl font-bold border-b-2 border-blue-500 mb-6 pb-2">ความเห็นชอบของสาขาวิชาเดิม ความเห็นของสาขาวิชาที่จะรับโอนย้าย</h2>
+        <div>
+          <h3 class="font-semibold underline mt-3">หลักสูตร 4 ปี</h3>
+          <ul class="list-disc ml-5 space-y-1">
+            <li>ได้ศึกษาตามแผนการศึกษาในสาขาวิชาเดิมมาแล้วไม่น้อยกว่า 2 ภาคการศึกษาปกติ</li>
+            <li>มีหน่วยกิตสะสมไม่น้อยกว่า 30 หน่วยกิต และมีคะแนนเฉลี่ยสะสมไม่น้อยกว่า 2.00</li>
+          </ul>
+        </div>
 
-      <div class="mb-6">
-        <label for="advisorOpinion" class="block font-semibold mb-1">(2) ความเห็นอาจารย์ที่ปรึกษา <span class="text-red-600">*</span></label>
-        <textarea id="advisorOpinion" name="advisorOpinion" rows="4" placeholder="กรอกความเห็น" required
-          class="w-full rounded-md border border-gray-300 p-2 resize-y focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
-        <p class="text-right mt-1">
-          (......................................................)<br />
-          อาจารย์ที่ปรึกษา<br />
-          วันที่ ....../....../25...
+        <p class="mt-3">และยื่นคำร้องโอนย้ายสาขาวิชาภายในคณะก่อนวันที่  
+          <input type="date" id="deadlineDate" name="deadlineDate" class="ml-2 p-1 border border-gray-300 rounded focus:ring-2 focus:ring-indigo-500" required />
         </p>
+      </section>
+
+      <div class="text-center">
+        <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-8 rounded shadow-lg transition duration-300">
+          ส่งคำร้องขอโอนย้าย
+        </button>
       </div>
-
-      <div class="mb-6">
-        <label for="programCommitteeOpinion1" class="block font-semibold mb-1">(5) ความเห็นประธานกรรมการบริหารหลักสูตร <span class="text-red-600">*</span></label>
-        <textarea id="programCommitteeOpinion1" name="programCommitteeOpinion1" rows="4" placeholder="กรอกความเห็น" required
-          class="w-full rounded-md border border-gray-300 p-2 resize-y focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
-        <p class="text-right mt-1">
-          (......................................................)<br />
-          ประธานกรรมการบริหารหลักสูตร<br />
-          วันที่ ....../........../25.......
-        </p>
-      </div>
-
-      <h3 class="text-lg font-semibold border-b border-gray-300 mb-6 pb-1">มีต่อหน้า 2</h3>
-
-      <div class="mb-6">
-        <label for="programCommitteeOpinion2" class="block font-semibold mb-1">(3) ความเห็นประธานกรรมการบริหารหลักสูตร <span class="text-red-600">*</span></label>
-        <textarea id="programCommitteeOpinion2" name="programCommitteeOpinion2" rows="4" placeholder="กรอกความเห็น" required
-          class="w-full rounded-md border border-gray-300 p-2 resize-y focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
-        <p class="text-right mt-1">
-          (......................................................)<br />
-          ประธานกรรมการบริหารหลักสูตร<br />
-          วันที่ ....../........../25.......
-        </p>
-      </div>
-
-      <div class="mb-6">
-        <label for="deanOpinion1" class="block font-semibold mb-1">(6) ความเห็นคณบดีคณะ <span class="text-red-600">*</span></label>
-        <textarea id="deanOpinion1" name="deanOpinion1" rows="4" placeholder="กรอกความเห็น" required
-          class="w-full rounded-md border border-gray-300 p-2 resize-y focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
-        <div class="flex gap-6 mt-2">
-          <label class="inline-flex items-center cursor-pointer text-green-600 font-semibold">
-            <input type="checkbox" id="approve1" name="deanApproval1" class="mr-2" />
-            อนุมัติ
-          </label>
-          <label class="inline-flex items-center cursor-pointer text-red-600 font-semibold">
-            <input type="checkbox" id="disapprove1" name="deanApproval1" class="mr-2" />
-            ไม่อนุมัติ
-          </label>
-        </div>
-        <p class="text-right mt-1">
-          (......................................................)<br />
-          คณบดีคณะ<br />
-          วันที่ ....../........../25.......
-        </p>
-      </div>
-
-      <div class="mb-6">
-        <label for="deanOpinion2" class="block font-semibold mb-1">(4) ความเห็นคณบดีคณะ <span class="text-red-600">*</span></label>
-        <textarea id="deanOpinion2" name="deanOpinion2" rows="4" placeholder="กรอกความเห็น" required
-          class="w-full rounded-md border border-gray-300 p-2 resize-y focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
-        <div class="flex gap-6 mt-2">
-          <label class="inline-flex items-center cursor-pointer text-green-600 font-semibold">
-            <input type="checkbox" id="approve2" name="deanApproval2" class="mr-2" />
-            เห็นชอบ
-          </label>
-          <label class="inline-flex items-center cursor-pointer text-red-600 font-semibold">
-            <input type="checkbox" id="disapprove2" name="deanApproval2" class="mr-2" />
-            ไม่เห็นชอบ
-          </label>
-        </div>
-        <p class="text-right mt-1">
-          (......................................................)<br />
-          คณบดีคณะ<br />
-          วันที่ ....../........../25.......
-        </p>
-      </div>
-
-      <div class="mb-6">
-        <label for="treasuryPayment" class="block font-semibold mb-1">(7) งานเงินรายได้กองคลัง ชั้น 1 สำนักอธิการบดี <span class="text-red-600">*</span></label>
-        <textarea id="treasuryPayment" name="treasuryPayment" rows="3" placeholder="กรอกรายละเอียด" required
-          class="w-full rounded-md border border-gray-300 p-2 resize-y focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
-        <p class="text-right mt-1">
-          (......................................................) ผู้รับเงิน<br />
-          นักวิชาการเงินและบัญชี<br />
-          วันที่ ....../....../25...
-        </p>
-      </div>
-
-      <div class="mb-6">
-        <label for="academicAdminOpinion" class="block font-semibold mb-1">(8) ความเห็นผู้อำนวยการสำนักบริหารและพัฒนาวิชาการ <span class="text-red-600">*</span></label>
-        <textarea id="academicAdminOpinion" name="academicAdminOpinion" rows="3" placeholder="กรอกรายละเอียด" required
-          class="w-full rounded-md border border-gray-300 p-2 resize-y focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
-        <p class="text-right mt-1">
-          (......................................................)<br />
-          ผู้อำนวยการสำนักบริหารและพัฒนาวิชาการ<br />
-          วันที่ ....../........../25.......
-        </p>
-      </div>
-
-      <div class="mb-6">
-        <label for="registrationOfficeOpinion" class="block font-semibold mb-1">(9) ความเห็นหัวหน้ากลุ่มภารกิจทะเบียนเรียนฯ <span class="text-red-600">*</span></label>
-        <textarea id="registrationOfficeOpinion" name="registrationOfficeOpinion" rows="3" placeholder="กรอกรายละเอียด" required
-          class="w-full rounded-md border border-gray-300 p-2 resize-y focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
-        <p class="text-right mt-1">
-          (..................................................)<br />
-          หัวหน้ากลุ่มภารกิจทะเบียนเรียน ประมวลผลฯ<br />
-          วันที่ ....../........../25.......
-        </p>
-      </div>
-
-      <div class="mb-10">
-        <label for="officerHandling" class="block font-semibold mb-1">(10) สำหรับเจ้าหน้าที่ดำเนินการ <span class="text-red-600">*</span></label>
-        <textarea id="officerHandling" name="officerHandling" rows="3" placeholder="กรอกรายละเอียด" required
-          class="w-full rounded-md border border-gray-300 p-2 resize-y focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
-        <p class="text-right mt-1">
-          ดำเนินการย้ายสาขาวิชาเป็นที่เรียบร้อยแล้ว<br />
-          รหัสนักศึกษาใหม่คือ .............................................................. <br />
-          (......................................................)<br />
-          ตำแหน่ง นักวิชาการศึกษา<br />
-          วันที่ ....../.........../25......
-        </p>
-      </div>
-
-      <p class="text-sm text-gray-600 mb-6">
-        <b>หมายเหตุ:</b><br />
-        - การโอนย้ายสาขาวิชาทั้งภายในคณะ และต่างคณะ จะกระทำได้เพียงครั้งเดียว<br />
-        - การยื่นคำร้องขอโอนย้ายสาขาวิชาทั้งภายในคณะ และต่างคณะ ที่ได้รับอนุมัติแล้ว จะต้องยื่นที่กลุ่มภารกิจทะเบียนเรียนประมวลผล และรับเข้าสำนักบริหารและพัฒนาวิชาการ ก่อนเริ่มเปิดภาคเรียนปกติที่ขอโอนย้ายไม่น้อยกว่า 4 สัปดาห์<br />
-        - นักศึกษาที่ขอโอนย้ายสาขาวิชาต่างคณะ จะต้องมีระยะเวลาศึกษาอยู่ในสาขาวิชาที่โอนย้ายเข้า ก่อนจบการศึกษาและมีสิทธิ์ขอรับปริญญา ดังนี้<br />
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• หลักสูตร 4 ปีเทียบเข้าเรียน (2 ปี) จะต้องมีระยะเวลาศึกษาอยู่ในสาขาวิชาที่โอนย้ายเข้า ไม่น้อยกว่า 2 ภาคการศึกษาปกติ<br />
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• หลักสูตร 4 ปี จะต้องมีระยะเวลาศึกษาอยู่ในสาขาวิชาที่โอนย้ายเข้า ไม่น้อยกว่า 4 ภาคการศึกษาปกติ
-      </p>
-
-      <button
-        type="submit"
-        class="w-full bg-blue-700 hover:bg-blue-800 text-white font-semibold py-3 rounded-md transition-colors"
-      >
-        พิมพ์แบบฟอร์ม
-      </button>
     </form>
   </main>
 
   <script>
-    // Custom validation & alert for form
     document.getElementById('transferForm').addEventListener('submit', function(event) {
       event.preventDefault();
+
       const form = event.target;
 
-      // Clear previous errors
-      const invalids = form.querySelectorAll('.border-red-500');
-      invalids.forEach(el => el.classList.remove('border-red-500'));
-
-      // Check required fields & patterns
-      let errors = [];
-
-      // Helper to check and mark error
-      function checkField(id, name, pattern = null, customMsg = '') {
-        const field = form.querySelector('#' + id);
-        if (!field) return;
-        if (!field.value.trim()) {
-          errors.push(`${name} - กรุณากรอกข้อมูล`);
-          field.classList.add('border-red-500');
-        } else if (pattern && !pattern.test(field.value.trim())) {
-          errors.push(`${name} - ${customMsg || 'รูปแบบไม่ถูกต้อง'}`);
-          field.classList.add('border-red-500');
-        }
+      function isEmptyOrSpaces(str) {
+        return str === null || str.match(/^ *$/) !== null;
       }
 
-      // Check date
-      checkField('date', 'วันที่');
-      checkField('month', 'เดือน');
-      checkField('year', 'ปี พ.ศ.', /^[0-9]{4}$/, 'กรุณากรอกปี พ.ศ. 4 ตัวเลข');
-      checkField('deanFaculty', 'คณบดีคณะ (คณะใหม่)');
-      checkField('fullname', 'ชื่อ-นามสกุล');
-      checkField('studentID', 'รหัสนักศึกษา');
-      checkField('phone', 'โทรศัพท์มือถือ', /^0[689]{1}-\d{4}-\d{4}$/, 'รูปแบบโทรศัพท์ต้องเป็น 08-xxxx-xxxx');
-      checkField('system', 'ระบบเรียน');
-      checkField('currentMajor', 'สาขาวิชา (ปัจจุบัน)');
-      checkField('currentFaculty', 'คณะ (ปัจจุบัน)');
-      checkField('transferMajor', 'สาขาวิชาที่จะโอนย้ายไป');
-      checkField('reason', 'เหตุผล');
-      checkField('submissionDate', 'วันที่ยื่นคำร้อง');
-      checkField('advisorOpinion', 'ความเห็นอาจารย์ที่ปรึกษา');
-      checkField('programCommitteeOpinion1', 'ความเห็นประธานกรรมการบริหารหลักสูตร (1)');
-      checkField('programCommitteeOpinion2', 'ความเห็นประธานกรรมการบริหารหลักสูตร (2)');
-      checkField('deanOpinion1', 'ความเห็นคณบดีคณะ (1)');
-      checkField('deanOpinion2', 'ความเห็นคณบดีคณะ (2)');
-      checkField('treasuryPayment', 'งานเงินรายได้กองคลัง');
-      checkField('academicAdminOpinion', 'ความเห็นผู้อำนวยการสำนักบริหารและพัฒนาวิชาการ');
-      checkField('registrationOfficeOpinion', 'ความเห็นหัวหน้ากลุ่มภารกิจทะเบียนเรียนฯ');
-      checkField('officerHandling', 'สำหรับเจ้าหน้าที่ดำเนินการ');
-
-      // Check radio title
-      const titleChecked = form.querySelector('input[name="title"]:checked');
-      if (!titleChecked) errors.push('คำนำหน้าชื่อ - กรุณาเลือกอย่างใดอย่างหนึ่ง');
-
-      // Check at least one course checkbox
-      const courseChecked = form.querySelectorAll('input[name="course"]:checked');
-      if (courseChecked.length === 0) {
-        errors.push('หลักสูตร - กรุณาเลือกอย่างน้อยหนึ่งรายการ');
+      // ตรวจสอบวันที่ (date)
+      const date = form.date.value.trim();
+      if (!date) {
+        alert('กรุณาเลือกวันที่');
+        form.date.focus();
+        return;
       }
 
-      // Check deanApproval1 only one checked
-      const approve1 = form.querySelector('#approve1').checked;
-      const disapprove1 = form.querySelector('#disapprove1').checked;
-      if (approve1 && disapprove1) {
-        errors.push('ความเห็นคณบดีคณะ (1) - ไม่สามารถเลือก อนุมัติ และ ไม่อนุมัติ พร้อมกันได้');
+      // ตรวจสอบคำนำหน้า
+      const title = form.title.value;
+      if (!title) {
+        alert('กรุณาเลือกคำนำหน้า');
+        return;
       }
 
-      // Check deanApproval2 only one checked
-      const approve2 = form.querySelector('#approve2').checked;
-      const disapprove2 = form.querySelector('#disapprove2').checked;
-      if (approve2 && disapprove2) {
-        errors.push('ความเห็นคณบดีคณะ (2) - ไม่สามารถเลือก เห็นชอบ และ ไม่เห็นชอบ พร้อมกันได้');
+      // ตรวจสอบชื่อ-นามสกุล
+      const fullName = form.fullName.value.trim();
+      if (isEmptyOrSpaces(fullName)) {
+        alert('กรุณากรอกชื่อ-นามสกุล');
+        form.fullName.focus();
+        return;
       }
 
-      if (errors.length > 0) {
-        alert('กรุณาแก้ไขข้อมูลต่อไปนี้:\n\n' + errors.join('\n'));
-        // Scroll to first error input
-        const firstError = form.querySelector('.border-red-500');
-        if (firstError) firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      } else {
-        // ถ้าข้อมูลครบและถูกต้อง ให้พิมพ์ฟอร์ม (เรียก print)
-        window.print();
+      // ตรวจสอบรหัสนักศึกษา 10 หลักตัวเลข
+      const studentId = form.studentId.value.trim();
+      if (!/^\d{10}$/.test(studentId)) {
+        alert('กรุณากรอกรหัสนักศึกษาให้ถูกต้อง เป็นตัวเลข 10 หลัก');
+        form.studentId.focus();
+        return;
       }
+
+      // ตรวจสอบเบอร์โทรศัพท์มือถือ (ขึ้นต้นด้วย 0)
+      let phone = form.phone.value.trim();
+      if (isEmptyOrSpaces(phone)) {
+        alert('กรุณากรอกเบอร์โทรศัพท์มือถือ');
+        form.phone.focus();
+        return;
+      }
+      phone = phone.replace(/[-\s]/g, '');
+      if (!/^0\d{8,9}$/.test(phone)) {
+        alert('กรุณากรอกเบอร์มือถือให้ถูกต้อง ขึ้นต้นด้วย 0 และมีความยาว 9-10 หลัก');
+        form.phone.focus();
+        return;
+      }
+
+      // ตรวจสอบระบบ
+      const system = form.system.value;
+      if (!system) {
+        alert('กรุณาเลือกระบบการศึกษา');
+        form.system.focus();
+        return;
+      }
+
+      // ตรวจสอบหลักสูตร
+      const course = form.course.value;
+      if (!course) {
+        alert('กรุณาเลือกหลักสูตร');
+        form.course.focus();
+        return;
+      }
+
+      // ตรวจสอบสาขาวิชาเดิม
+      const currentMajor = form.currentMajor.value.trim();
+      if (isEmptyOrSpaces(currentMajor)) {
+        alert('กรุณากรอกสาขาวิชาเดิม');
+        form.currentMajor.focus();
+        return;
+      }
+
+      // ตรวจสอบคณะเดิม
+      const currentFaculty = form.currentFaculty.value.trim();
+      if (isEmptyOrSpaces(currentFaculty)) {
+        alert('กรุณากรอกคณะเดิม');
+        form.currentFaculty.focus();
+        return;
+      }
+
+      // ตรวจสอบสาขาวิชาที่ต้องการย้ายไป
+      const targetMajor = form.targetMajor.value.trim();
+      if (isEmptyOrSpaces(targetMajor)) {
+        alert('กรุณากรอกสาขาวิชาที่ต้องการย้ายไป');
+        form.targetMajor.focus();
+        return;
+      }
+
+      // ตรวจสอบเหตุผลขอโอนย้าย (ไม่น้อยกว่า 10 ตัวอักษร)
+      const reason = form.reason.value.trim();
+      if (isEmptyOrSpaces(reason) || reason.length < 10) {
+        alert('กรุณากรอกเหตุผลในการขอโอนย้าย อย่างน้อย 10 ตัวอักษร');
+        form.reason.focus();
+        return;
+      }
+
+      // ตรวจสอบวันที่ยื่นคำร้อง (deadlineDate)
+      const deadlineDate = form.deadlineDate.value.trim();
+      if (!deadlineDate) {
+        alert('กรุณาเลือกวันที่ยื่นคำร้องโอนย้าย');
+        form.deadlineDate.focus();
+        return;
+      }
+
+      // deadlineDate ต้องไม่อยู่ก่อน date
+      if (deadlineDate < date) {
+        alert('วันที่ยื่นคำร้องต้องไม่ก่อนวันที่กรอกด้านบน กรุณาตรวจสอบวันที่ให้ถูกต้อง');
+        form.deadlineDate.focus();
+        return;
+      }
+
+      // ผ่านทั้งหมด
+      alert('ส่งคำร้องเรียบร้อยแล้ว\n\nขอให้ท่านได้รับการอนุมัติคำร้องโดยเร็วครับ');
+      form.reset();
     });
   </script>
 
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Sarabun&display=swap');
-    body {
-      font-family: 'Sarabun', sans-serif;
-    }
-
-    /* Print styles */
-    @media print {
-      body {
-        background: white !important;
-        color: black !important;
-        padding: 0 !important;
-      }
-      main {
-        box-shadow: none !important;
-        border-radius: 0 !important;
-        padding: 0 !important;
-        margin: 0 !important;
-        width: 100% !important;
-      }
-      button {
-        display: none !important;
-      }
-      input[type="checkbox"],
-      input[type="radio"] {
-        transform: scale(1) !important;
-      }
-    }
-  </style>
 </body>
 </html>
